@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content%}
+    <p>В домиках есть всё, чтобы чувствовать себя максимально комфортно:</p>
+    <ul>
+        {% for h in house %}
+        <li>{{ h }}</li>
+        {% empty %}
+        <li>Информации нету</li>
+        {% endfor %}
+    </ul>   
+{% endblock content %}

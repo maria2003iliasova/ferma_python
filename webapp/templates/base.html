@@ -1,22 +1,37 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
-    
+    <link rel="stylesheet" href="{% static "styles.css" %}" />
 </head>
 <body>
     {% block mainmenu %}
-    <ul>
-        <a href="/">Главная</a>
-        <a href="/houses">Домики</a>
-        <a href="/place">Где мы есть</a>
-        <a href="/account">Вход</a>
-    </ul>
+    <header class="menu">
+            <ul class="menu_list">
+                <li class="menu_item"><a class="menu_link" href="/">
+                    <img class="logo_img" src="{% static "logo.png" %}" alt="логотип">
+                </a></li>
+                <li class="menu_item"><a class="menu_link" href="/">Главная</a></li>
+                <li class="menu_item"><a class="menu_link" href="/houses">Домики</a></li>
+                <li class="menu_item"><a class="menu_link" href="/place">Где мы есть</a></li>
+                <li class="menu_item"><a class="menu_link" href="/account">Вход</a></li>
+            </ul>
+    </header>
     {% endblock mainmenu %}
 
-    {% block content %}
+    {% block head %}
     <h1>{{heading}}</h1>
+    {% endblock head %}
+    {% block content%}
+    <p>Ничего нету</p>
     {% endblock content %}
+    {% block footer %}
+    <footer class="footer">
+        <p>© Все права защищены</p>
+        <p>Разработала: Илясова Мария Александровна, ИСПсп-119</p>
+    </footer>
+    {% endblock footer %}
 </body>
 </html>
