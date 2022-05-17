@@ -1,1 +1,20 @@
 {% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Забронировать</button>
+    </form>    
+        <col>{{name}}</col>
+    <col>{{surname}}</col>
+    <col>{{arrival_date}}</col>
+    <col>{{departure_date}}</col>
+    <col>{{adults_count}}</col>
+    <col>{{children_count}}</col>
+    <col>{{pets_count}}</col>
+    <col>{{house_count}}</col>
+{% endblock content %}
