@@ -7,14 +7,26 @@
             {% csrf_token %}
             {{ form }}
         </table>
-        <button type="submit">Забронировать</button>
-    </form>    
-        <col>{{name}}</col>
-    <col>{{surname}}</col>
-    <col>{{arrival_date}}</col>
-    <col>{{departure_date}}</col>
-    <col>{{adults_count}}</col>
-    <col>{{children_count}}</col>
-    <col>{{pets_count}}</col>
-    <col>{{house_count}}</col>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if bron.count > 0 %}
+        <h2>Список пользователей</h2>
+        <table>
+            <thead><th>Id</th><th>Пользователь</th><th>Дата заезда</th><th>Дата выезда</th><th>Взрослых</th><th>Детей</th><th>Питомцев</th><th>Ознокомление с информацией</th><th>Домиков</th></thead>
+            {% for bron in bron %}
+            <tr>
+                <td>{{ bron.id }}</td>
+                <td>{{ bron.author }}</td>
+                <td>{{ bron.arrival_date }}</td>
+                <td>{{ bron.departure_date }}</td>
+                <td>{{ bron.adults_count }}</td>
+                <td>{{ bron.children_count }}</td>
+                <td>{{ bron.pets_count }}</td>
+                <td>{{ bron.info }}</td>
+                <td>{{ bron.house_count }}</td>
+                <td><a href="edit/{{bron.id}}">Изменить</a> | <a href="delete/{{bron.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
 {% endblock content %}
