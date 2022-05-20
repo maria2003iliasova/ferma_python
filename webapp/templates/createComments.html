@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if coms.count > 0 %}
+        <h2>Список комментариев</h2>
+        <table>
+            <thead><th>Id</th><th>Автор</th><th>текст</th><th>Дата создания</th><th>Дата изменения</th><th>Статья</th></thead>
+            {% for comment in coms %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.author }}</td>
+                <td>{{ comment.text }}</td>
+                <td>{{ comment.time_create }}</td>
+                <td>{{ comment.time_update }}</td>
+                <td>{{ comment.articles }}</td>
+                <td><a href="/account/editComments/{{comment.id}}">Изменить</a> | <a href="/account/deleteComments/{{comment.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
+{% endblock content %}

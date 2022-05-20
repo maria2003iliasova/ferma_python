@@ -20,7 +20,6 @@ class Articles(models.Model):
     title = models.CharField(max_length=50)
     author = models.ForeignKey(User, on_delete = models.CASCADE)
     text = models.TextField()
-    photo = models.ImageField()
     time_create = models.DateField()
     time_update = models.DateField()
     is_published = models.BooleanField()

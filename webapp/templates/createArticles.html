@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if articles.count > 0 %}
+        <h2>Список статей</h2>
+        <table>
+            <thead><th>Id</th><th>Автор</th><th>Название</th><th>Текст</th><th>Дата создания</th><th>Дата изменений</th><th>Публикация</th></thead>
+            {% for articles in articles %}
+            <tr>
+                <td>{{ articles.id }}</td>
+                <td>{{ articles.author }}</td>
+                <td>{{ articles.title }}</td>
+                <td>{{ articles.text }}</td>
+                <td>{{ articles.time_create }}</td>
+                <td>{{ articles.time_update }}</td>
+                <td>{{ articles.is_published }}</td>
+                <td><a href="account/createArticles/editArticles/{{articles.id}}">Изменить</a> | <a href="account/createArticles/deleteArticles/{{articles.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
+{% endblock content %}
